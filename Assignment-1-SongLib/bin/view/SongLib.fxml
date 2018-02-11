@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="340.0" prefWidth="483.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <SplitPane dividerPositions="0.33405639913232105" layoutX="14.0" layoutY="14.0" prefHeight="305.0" prefWidth="463.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView layoutY="-1.0" prefHeight="318.0" prefWidth="150.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Name" />
+                      <TableColumn prefWidth="75.0" text="Artist" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="303.0" prefWidth="243.0">
+               <children>
+                  <GridPane layoutX="26.0" layoutY="58.0" prefHeight="60.0" prefWidth="252.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextField fx:id="enterName" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="enterArtist" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="enterAlbum" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="enterYear" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ARTIST" textAlignment="CENTER" wrappingWidth="61.49365234375" GridPane.columnIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ALBUM" textAlignment="CENTER" wrappingWidth="61.49365234375" GridPane.columnIndex="2" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="YEAR" textAlignment="CENTER" wrappingWidth="64.49365234375" GridPane.columnIndex="3" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NAME" textAlignment="CENTER" wrappingWidth="61.49365234375" />
+                     </children>
+                  </GridPane>
+                  <Button fx:id="newSong" layoutX="62.0" layoutY="174.0" mnemonicParsing="false" text="NEW" />
+                  <Button fx:id="editSong" layoutX="123.0" layoutY="174.0" mnemonicParsing="false" text="EDIT" />
+                  <Button fx:id="deleteSong" layoutX="182.0" layoutY="174.0" mnemonicParsing="false" text="DELETE" />
+                  <Text layoutX="95.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Song Details" textAlignment="CENTER" wrappingWidth="120.18115234375" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
