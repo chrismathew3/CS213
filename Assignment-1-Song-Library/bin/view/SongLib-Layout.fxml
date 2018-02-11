@@ -1,3 +1,8 @@
+/*	Created by: Chris Mathew & Kyle Abed
+ * 	Title: SongLib
+ * 	Class: CS213 Software Methodology
+ * 	Purpose: Java GUI for a Song Library using Java FX
+ */
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>

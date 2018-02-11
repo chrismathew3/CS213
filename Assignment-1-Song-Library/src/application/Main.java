@@ -6,29 +6,37 @@
 
 package application;
 	
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 
 
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) {
-		FXMLLoader loader = new FXMLLoader();  //Object to load FXML file
-		loader.setLocation(getClass().getResource("/view/SongLib-Layout.fxml")); //Sets location for loader to use
-		
-		
+	public void start(Stage primaryStage) throws IOException  {
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			// Load Song Overview
+			FXMLLoader loader = new FXMLLoader();  //Object to load FXML file
+			loader.setLocation(getClass().getResource("/view/SongLib-Layout.fxml")); //Sets location for loader to use
+			AnchorPane root = (AnchorPane)loader.load();
+			
+			// Set Song Overview as Root
+			Scene scene = new Scene(root,400,600);
+			primaryStage.setTitle("SongLib");
 			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch(Exception e) {
+			primaryStage.show(); 
+			
+			
+			
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
 	
 	public static void main(String[] args) {
