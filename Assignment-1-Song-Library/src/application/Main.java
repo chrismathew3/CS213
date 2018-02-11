@@ -30,6 +30,9 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show(); 
 			
+			// Get the controller and pass off control
+			ViewController vc = loader.getController();
+			
 			
 			
 		} catch(IOException e) {
