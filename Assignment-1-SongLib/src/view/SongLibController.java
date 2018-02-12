@@ -1,13 +1,20 @@
 package view;
 
 
+
+
+import application.Song;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 
@@ -15,8 +22,8 @@ import javafx.scene.control.TextField;
 public class SongLibController  {
 	
 	
-	@FXML ListView<String> listViewName;
-	@FXML ListView<String> listViewArtist;
+	@FXML TableView<Song> tableView;
+	@FXML TableColumn<Song, String> nameColumn;
 	@FXML Button newSong;
 	@FXML Button deleteSong;
 	@FXML Button editSong;
@@ -24,13 +31,14 @@ public class SongLibController  {
 	@FXML TextField enterArtist;
 	@FXML TextField enterAlbum;
 	@FXML TextField enterYear;
-	
-	private ObservableList<String> obsListName;
-	private ObservableList<String> obsListArtist;
+	private ObservableList<Song> tempList;
+	private ObservableList<Song> obsListName;
+	private ObservableList<Song> obsListArtist;
 	public void start() {
-		obsListName = FXCollections.observableArrayList("Stronger");
-		listViewName.setItems(obsListName);
-		obsListArtist = FXCollections.observableArrayList("Kanye West");
+		Song first = new Song("Stronger", "KanyeWest");
+		obsListName = FXCollections.observableArrayList(first);
+		tableView.setItems(obsListName);
+		obsListArtist = FXCollections.observableArrayList(first);
 		listViewArtist.setItems(obsListArtist);
 		newSong.setOnAction(newbuttonHandler);
 		deleteSong.setOnAction(deletebuttonHandler);
@@ -40,7 +48,46 @@ public class SongLibController  {
 	EventHandler<ActionEvent> newbuttonHandler = new EventHandler<ActionEvent>() {
 	    @Override
 	    public void handle(ActionEvent event) {
-	    		System.out.println("HERE");
+	    		Boolean isName;
+	    		Boolean isArtist;
+	    		//Boolean isAlbum;
+	    		//Boolean isYear;
+	    	
+	    		String name = enterName.getText();
+			if(name.length() <= 1) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Warning!");
+				alert.setHeaderText(null);
+				alert.setContentText("Enter the song name with at least 1 character!");
+				alert.showAndWait();
+				isName = false;
+			}else {
+				isName = true;
+			}
+			
+			String artist = enterArtist.getText();
+			if(artist.length() <= 1) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Warning!");
+				alert.setHeaderText(null);
+				alert.setContentText("Enter artist with at least 1 character!");
+				alert.showAndWait();
+				isArtist = false;
+			}else {
+				isArtist = true;
+			}
+			if((isName && isArtist) == true) {
+				Song temp = new Song(name, artist);
+				
+				
+				tempList = FXCollections.observableArrayList(temp);
+				ObservableList<Song> concatName = FXCollections.concat(tempList, obsListName);
+				obsListName = concatName;
+				listViewName.setItems(concatName);
+	    			System.out.println("NAME IS: " + temp.name + " Artist is: " + temp.artist + " ");
+			}else {
+				System.out.println("Alert Should of popped up!");
+			}
 	    		event.consume();
 	    }
 	};

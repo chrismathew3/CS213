@@ -9,14 +9,16 @@
 
 <AnchorPane fx:id="rootAnchor" prefHeight="300.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="view.SongLibController">
    <children>
-      <SplitPane fx:id="splitPane" dividerPositions="0.3377926421404682" layoutX="127.0" layoutY="70.0" prefHeight="160.0" prefWidth="254.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane fx:id="splitPane" dividerPositions="0.45484949832775917" layoutX="127.0" layoutY="70.0" prefHeight="160.0" prefWidth="254.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane fx:id="songListAnchor" minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="200.0">
                <children>
-                  <ListView fx:id="listViewName" layoutY="14.0" prefHeight="285.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="15.0" />
-                  <ListView fx:id="listViewArtist" layoutX="100.0" layoutY="14.0" prefHeight="285.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0" />
-                  <Text layoutX="1.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME" textAlignment="CENTER" wrappingWidth="100.0" />
-                  <Text layoutX="99.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ARTIST" textAlignment="CENTER" wrappingWidth="100.0" />
+                  <TableView fx:id="songTable" layoutY="1.0" prefHeight="298.0" prefWidth="268.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn prefWidth="138.0" text="SONG NAME" />
+                      <TableColumn prefWidth="128.0" text="ARTIST" />
+                    </columns>
+                  </TableView>
                </children>
             </AnchorPane>
           <AnchorPane fx:id="songDetailAnchor" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -33,7 +35,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NAME" textAlignment="CENTER" wrappingWidth="99.5146484375" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SONG NAME" textAlignment="CENTER" wrappingWidth="99.5146484375" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ARTIST" textAlignment="CENTER" wrappingWidth="99.5146484375" GridPane.rowIndex="1" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ALBUM" textAlignment="CENTER" wrappingWidth="99.5146484375" GridPane.rowIndex="2" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="YEAR" textAlignment="CENTER" wrappingWidth="99.5146484375" GridPane.rowIndex="3" />

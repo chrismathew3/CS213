@@ -19,7 +19,7 @@ public class Main extends Application {
 			AnchorPane root = (AnchorPane)loader.load();
 			SongLibController slc = loader.getController();
 			slc.start();
-			Scene s = new Scene(root, 200, 300);
+			Scene s = new Scene(root, 600, 300);
 			primaryStage.setScene(s);
 			primaryStage.show();
 			

@@ -2,10 +2,10 @@ package application;
 
 public class Song {
 
-	String name;
-	String artist;
-	String album;
-	String year;
+	public String name;
+	public String artist;
+	public String album;
+	public String year;
 	
 	public Song(String name, String artist) {
 		this.name = name;
