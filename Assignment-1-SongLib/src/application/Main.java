@@ -11,6 +11,7 @@ import view.SongLibController;;
 
 public class Main extends Application {
 	
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -19,7 +20,7 @@ public class Main extends Application {
 			AnchorPane root = (AnchorPane)loader.load();
 			SongLibController slc = loader.getController();
 			slc.start();
-			Scene s = new Scene(root, 600, 300);
+			Scene s = new Scene(root, 650, 300);
 			primaryStage.setScene(s);
 			primaryStage.show();
 			
