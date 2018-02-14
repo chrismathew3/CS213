@@ -4,46 +4,26 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="325.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SongLibController">
+<AnchorPane fx:id="Base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SongLibController">
    <children>
-      <TableView fx:id="tableView" layoutX="36.0" layoutY="24.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="10.0">
+      <TableView fx:id="SongTable" layoutX="23.0" layoutY="48.0" prefHeight="305.0" prefWidth="305.0">
         <columns>
-          <TableColumn fx:id="nameColumn" prefWidth="339.0" text="Name" />
+          <TableColumn fx:id="SongColumn" prefWidth="151.0" text="Song" />
+          <TableColumn fx:id="ArtistColumn" prefWidth="153.0" text="Artist" />
         </columns>
       </TableView>
-      <Label layoutX="371.0" layoutY="32.0" prefHeight="29.0" prefWidth="60.0" text="Song:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="371.0" layoutY="86.0" prefHeight="23.0" prefWidth="60.0" text="Artist:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="368.0" layoutY="143.0" text="Album:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="376.0" layoutY="199.0" text="Year:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TextField fx:id="enterSong" layoutX="438.0" layoutY="33.0" prefHeight="27.0" prefWidth="204.0" />
-      <TextField fx:id="enterArtist" layoutX="438.0" layoutY="86.0" prefHeight="27.0" prefWidth="204.0" />
-      <TextField fx:id="enterAlbum" layoutX="438.0" layoutY="143.0" prefHeight="27.0" prefWidth="204.0" />
-      <TextField fx:id="enterYear" layoutX="438.0" layoutY="199.0" prefHeight="27.0" prefWidth="204.0" />
-      <Button fx:id="newSong" layoutX="364.0" layoutY="254.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="ADD" />
-      <Button fx:id="deleteSong" layoutX="465.0" layoutY="254.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="DELETE" />
-      <Button fx:id="editSong" layoutX="561.0" layoutY="254.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="EDIT" />
-      <Label layoutX="438.0" prefHeight="29.0" prefWidth="130.0" text="Song Details">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
+      <TextField fx:id="SongField" layoutX="425.0" layoutY="77.0" />
+      <TextField fx:id="ArtistField" layoutX="425.0" layoutY="132.0" />
+      <TextField fx:id="AlbumField" layoutX="425.0" layoutY="191.0" />
+      <TextField fx:id="YearField" layoutX="425.0" layoutY="249.0" />
+      <Text fx:id="SongText" layoutX="350.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Song" />
+      <Text fx:id="ArtistText" layoutX="350.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artist" />
+      <Text fx:id="AlbumText" layoutX="350.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album" />
+      <Text fx:id="YearText" layoutX="350.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year" />
+      <Button fx:id="AddButton" layoutX="367.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleAddButton" text="Add" />
+      <Button fx:id="EditButton" layoutX="437.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleEditButton" text="Edit" />
+      <Button fx:id="DeleteButton" layoutX="504.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleDeleteButton" text="Delete" />
+      <Text fx:id="SongDetailsText" layoutX="419.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Song Details" />
    </children>
 </AnchorPane>
