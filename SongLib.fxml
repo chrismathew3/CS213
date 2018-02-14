@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="325.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SongLibController">
+   <children>
+      <TableView fx:id="songLib" layoutX="36.0" layoutY="24.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="10.0">
+        <columns>
+          <TableColumn fx:id="songColumn" prefWidth="170.0" text="Song" />
+          <TableColumn fx:id="artistColumn" prefWidth="170.0" text="Artist" />
+        </columns>
+      </TableView>
+      <Label fx:id="songLabel" layoutX="371.0" layoutY="14.0" prefHeight="29.0" prefWidth="60.0" text="Song:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="artistLabel" layoutX="371.0" layoutY="79.0" prefHeight="23.0" prefWidth="60.0" text="Artist:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="albumLabel" layoutX="368.0" layoutY="137.0" text="Album:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="yearLabel" layoutX="376.0" layoutY="195.0" text="Year:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="enterSong" layoutX="438.0" layoutY="15.0" prefHeight="27.0" prefWidth="204.0" />
+      <TextField fx:id="enterArtist" layoutX="438.0" layoutY="79.0" prefHeight="27.0" prefWidth="204.0" />
+      <TextField fx:id="enterAlbum" layoutX="438.0" layoutY="137.0" prefHeight="27.0" prefWidth="204.0" />
+      <TextField fx:id="enterYear" layoutX="438.0" layoutY="195.0" prefHeight="27.0" prefWidth="204.0" />
+      <Button fx:id="addSong" layoutX="364.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="35.0" prefWidth="75.0" text="ADD" />
+      <Button fx:id="deleteSong" layoutX="465.0" layoutY="254.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="DELETE" />
+      <Button fx:id="editSong" layoutX="561.0" layoutY="254.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="EDIT" />
+   </children>
+</AnchorPane>
