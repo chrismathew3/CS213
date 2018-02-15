@@ -72,15 +72,82 @@ public class SongLibController {
 			Alert error = new Alert(Alert.AlertType.ERROR, "Please enter a valid Song AND Artist to add to the library", ButtonType.CLOSE);
 			error.showAndWait();
 			return;	
-		} else {
-			tableList.add(new Song(SongField.getText().trim(), ArtistField.getText().trim(), AlbumField.getText().trim(), YearField.getText().trim()));
-			SongTable.setItems(getSongData());
-	
-		}  
+		}
+		String name = SongField.getText().trim();
+		String artist = ArtistField.getText().trim();
+		String album = AlbumField.getText().trim();
+		String year = YearField.getText().trim();
+		if(year.length() != 0) {
+			if(isInteger(year) == false) {
+				Alert error3 = new Alert(Alert.AlertType.ERROR, "Please enter a valid year using only numbers", ButtonType.CLOSE);
+				error3.showAndWait();
+				return;	
+			}
+		}
+		Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to add the selected song?", ButtonType.YES, ButtonType.NO);
+		Optional<ButtonType> result = confirm.showAndWait();
+		if(result.get() == ButtonType.YES) {
+			//Both year and album are full
+			if(year.length()!=0 && album.length() != 0) {
+				SelectSong(searchAndAdd(SongTable.getItems(), new Song(name, artist, album, year)));
+			//Year is full but album is not	
+			}else if(year.length()!= 0 && album.length() == 0) {
+				SelectSong(searchAndAdd(SongTable.getItems(), new Song(name, artist, year, true)));
+			//Album is full but year is not	
+			}else if(year.length()==0 && album.length() != 0){
+				SelectSong(searchAndAdd(SongTable.getItems(), new Song(name, artist, album, false)));
+			//Album is empty and year is empty	
+			}else if(year.length()==0 && album.length() == 0){
+				SelectSong(searchAndAdd(SongTable.getItems(), new Song(name, artist)));
+			}
+		}	
+		
 	 }
 	@FXML
 	private void handleEditButton(ActionEvent event) {
-		
+		int index = SongTable.getSelectionModel().getSelectedIndex();
+		if(index < 0 || index > SongTable.getItems().size()) {
+			Alert error = new Alert(Alert.AlertType.ERROR, "No song selected.  Please select a valid song.", ButtonType.CLOSE);
+			error.showAndWait();
+			return;
+		}
+		if (SongField.getText().trim().isEmpty() || ArtistField.getText().trim().isEmpty()) {
+			Alert error2 = new Alert(Alert.AlertType.ERROR, "Please enter a valid Song AND Artist to edit to the library", ButtonType.CLOSE);
+			error2.showAndWait();
+			return;
+		}
+		String name = SongField.getText().trim();
+		String artist = ArtistField.getText().trim();
+		String album = AlbumField.getText().trim();
+		String year = YearField.getText().trim();
+		if(year.length() != 0) {
+			if(isInteger(year) == false) {
+				Alert error3 = new Alert(Alert.AlertType.ERROR, "Please enter a valid year using only numbers", ButtonType.CLOSE);
+				error3.showAndWait();
+				return;	
+			}
+		}
+		Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to edit the selected song?", ButtonType.YES, ButtonType.NO);
+		Optional<ButtonType> result = confirm.showAndWait();
+		if(result.get() == ButtonType.YES) {
+			//Both year and album are full
+			if(year.length()!=0 && album.length() != 0) {
+				SongTable.getItems().remove(index);
+				SelectSong(searchAndAdd(SongTable.getItems(), new Song(name, artist, album, year)));
+			//Year is full but album is not	
+			}else if(year.length()!= 0 && album.length() == 0) {
+				SongTable.getItems().remove(index);
+				SelectSong(searchAndAdd(SongTable.getItems(), new Song(name, artist, year, true)));
+			//Album is full but year is not	
+			}else if(year.length()==0 && album.length() != 0){
+				SongTable.getItems().remove(index);
+				SelectSong(searchAndAdd(SongTable.getItems(), new Song(name, artist, album, false)));
+			//Album is empty and year is empty	
+			}else if(year.length()==0 && album.length() == 0){
+				SongTable.getItems().remove(index);
+				SelectSong(searchAndAdd(SongTable.getItems(), new Song(name, artist)));
+			}
+		}
 	}
 	@FXML
 	private void handleDeleteButton(ActionEvent event) {
@@ -114,4 +181,48 @@ public class SongLibController {
 		}
 	
 	}
+	private boolean isInteger(String s) {
+	    try { 
+	        Integer.parseInt(s); 
+	    } catch(NumberFormatException e) { 
+	        return false; 
+	    } catch(NullPointerException e) {
+	        return false;
+	    }
+	    // only got here if we didn't return false
+	    return true;
+	}
+	
+	private int searchAndAdd(ObservableList<Song> list, Song tmp) {
+		if (list.size() == 0) {
+            list.add(tmp);
+            return -1;
+        }
+		for(int i = 0; i < list.size(); i++) {
+			if(tmp.getSong().compareTo(list.get(i).getSong()) == 0) {
+				if(tmp.getArtist().compareTo(list.get(i).getArtist()) == 0) {
+					return -1; //Duplicate found
+				}else if(tmp.getArtist().compareTo(list.get(i).getArtist()) < 0){
+					list.add(i, tmp);
+					return i;
+				}
+			}
+			if(tmp.getSong().compareTo(list.get(i).getSong()) < 0) {
+				list.add(i, tmp);
+				return i;
+			}
+		}
+		list.add(tmp);
+		return list.size() - 1;
+	}
+	  private void SelectSong(int select) {
+	    	if (select != -1) {
+				SongTable.getSelectionModel().select(select);
+				SongTable.getFocusModel().focus(select);
+				showSongDetails(SongTable.getItems().get(select));
+			} else {
+				Alert error = new Alert(Alert.AlertType.ERROR, "Invalid Song! Song is already present.", ButtonType.CLOSE);
+				error.showAndWait();
+			}
+	    }
 }

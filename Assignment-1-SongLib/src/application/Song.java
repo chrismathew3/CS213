@@ -12,6 +12,18 @@ public class Song {
 		this.artist = artist;
 	}
 	
+	public Song(String song, String artist, String tmp, Boolean isYear) {
+		if(isYear == true) {
+			this.song = song;
+			this.artist = artist;
+			this.year = tmp;
+		}else {
+			this.song = song;
+			this.artist = artist;
+			this.album = tmp;
+		}
+	}
+	
 	public Song(String song, String artist, String album, String year) {
 		this.song = song;
 		this.artist = artist;
