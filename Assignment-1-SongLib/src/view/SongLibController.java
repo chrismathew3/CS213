@@ -196,7 +196,7 @@ public class SongLibController {
 	private int searchAndAdd(ObservableList<Song> list, Song tmp) {
 		if (list.size() == 0) {
             list.add(tmp);
-            return -1;
+            return 0;
         }
 		for(int i = 0; i < list.size(); i++) {
 			if(tmp.getSong().compareTo(list.get(i).getSong()) == 0) {
@@ -213,7 +213,7 @@ public class SongLibController {
 			}
 		}
 		list.add(tmp);
-		return list.size() - 1;
+		return list.size();
 	}
 	  private void SelectSong(int select) {
 	    	if (select != -1) {
